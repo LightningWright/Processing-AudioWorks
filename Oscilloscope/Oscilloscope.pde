@@ -5,10 +5,10 @@ void setup()
 {
   
   frameRate(120);
-  size(1400, 720,JAVA2D);
-  surface.setResizable(true);
+  size(1280, 720);
+  //surface.setResizable(true);
   
-  r = height/2;
+  h2 = height/2;
   coef = (float)(width+45)/sampleRate;
   
   minim = new Minim(this);
@@ -46,16 +46,14 @@ void draw()
 }
 
 void mousePressed(){
-  if(mouseButton == RIGHT && mouseY > 35)
-  {
+  if(mouseButton == RIGHT && mouseY > 35)  {
     if (colorIndex == 3){colorIndex = 0;}
     else{colorIndex++;}
     setMode(mode,colorIndex);
   }
   
-  if(mouseButton == LEFT && mouseY > 35){ 
-    if (mode == 4){mode = 0;}
-    else{mode++;}
+  if(mouseButton == LEFT && mouseY > 35)  { 
+    if (mode == 4){mode = 0;} else{mode++;} 
     setMode(mode,colorIndex);
   }
   
@@ -65,19 +63,20 @@ void mousePressed(){
       mouseX <= playpauseX+16 &&
       mouseY >= buttonsY &&
       mouseY <= buttonsY+20 )
-  {
-    if(playing){song.pause();}
-    else{song.play();}
-  }
+    {
+      if(playing){song.pause();}
+      else{song.play();}
+    }
+    
   // FWD EVENT LOGIC
   if( mouseButton == LEFT && 
       mouseX >= fwdX &&
       mouseX <= fwdX+16 &&
       mouseY >= buttonsY &&
       mouseY <= buttonsY+20 )
-  {
-    player.skip(4000);
-  }
+    {
+      player.skip(4000);
+    }
   
   // RWD EVENT LOGIC
   if( mouseButton == LEFT && 
@@ -85,18 +84,24 @@ void mousePressed(){
       mouseX <= rwdX+16 &&
       mouseY >= buttonsY &&
       mouseY <= buttonsY+20 )
-  {
-    player.skip(-4000);
-  }
+    {
+      player.skip(-4000);
+    }
+  
+  //OPEN EVENT LOGIC
+  if( mouseButton == LEFT && 
+      mouseX >= openX &&
+      mouseX <= openX+12 &&
+      mouseY >= buttonsY &&
+      mouseY <= buttonsY+20 )
+    {
+      song.choose();
+    }
 
 }
 void keyPressed() {
   if(key==' ')exit();
   if(key=='s')saveFrame("###.jpeg");
-  //if(key == 'w'){player.skip(4000);}
-  //if(key == 'q'){player.skip(-4000);}
-  //if(key == 'e'){song.pause();}
-  //if(key == 'r'){song.play();}
   if(key == 'º'){info = !info; if(drawOpacity == 200){drawOpacity = 80;}else if(drawOpacity == 80){drawOpacity = 200;}}
   if(key == 'l'){song.choose();}
   

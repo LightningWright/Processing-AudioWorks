@@ -4,7 +4,7 @@ AudioMetaData meta;
 BeatDetect beat;
 Song song;
 
-int r;
+int h2;
 //int bsize;
 float coef; //Coeficiente de ajuste de los graficos
 int time;
@@ -24,11 +24,12 @@ boolean blockDrawUP = true;
 boolean blockDrawCENTER = true;
 boolean blockDrawDOWN = true;
 
-int playpauseX = 150;
-int fwdX = 180;
-int rwdX = 128;
-int volX = 220;
+int playpauseX = 180;
+int fwdX = 210;
+int rwdX = 158;
+int volX = 260;
 int volQuant;
+int openX = 120;
 int buttonsY = 15;
 
 

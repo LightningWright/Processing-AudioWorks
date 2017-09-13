@@ -5,7 +5,7 @@ void drawUP(color c){
     for (int i = 0; i < sampleRate; i+= 6 + precisionRatio())
     {
       float x2 = i*coef;
-      float y2 = (-r/2 + r + player.right.get(i)*height/9);
+      float y2 = (-h2/2 + h2 + player.right.get(i)*height/9);
       stroke(c,drawOpacity);
       vertex(x2, y2);
   
@@ -25,9 +25,9 @@ void drawCENTER(color c){
     {
       stroke(c,drawOpacity);
       float x = i*coef;
-      float y = (r);
+      float y = h2;
       float x2 = i*coef;
-      float y2 = (r + player.mix.get(i)*height/9);
+      float y2 = h2 + player.mix.get(i)*height/9;
       line(x, y, x2, y2);
     }
     
@@ -36,7 +36,7 @@ void drawCENTER(color c){
     for (int i = 0; i < sampleRate; i+=32)
     {
       float x2 = i*coef;
-      float y2 = (r + player.mix.get(i)*height/9);
+      float y2 = h2 + player.mix.get(i)*height/9;
       stroke(c,drawOpacity);
       vertex(x2, y2);
   
@@ -54,9 +54,9 @@ void drawDOWN(color c){
   for (int i = 0; i < sampleRate - 1; i+= 4 + precisionRatio())
   {
     float x = i*coef;
-    float y = (r/2 + r);
+    float y = h2/2 + h2;
     float x2 = i*coef;
-    float y2 = (r/2 + r + player.left.get(i)*height/9);
+    float y2 = h2/2 + h2 + player.left.get(i)*height/9;
     stroke(c,drawOpacity);
     line(x, y, x2, y2);
   }
@@ -91,7 +91,7 @@ void drawButtons(){
     vertex(x-8,y+10); vertex(x,y+20); vertex(x,y+10); vertex(x+8,y+20);
   endShape();
   
-  beginShape();
+  beginShape(); //VOL BACK
   fill(200,200,200);
   vertex(volX,y); vertex(volX,y+20); vertex(volX+100,y+20); vertex(volX+100,y);
   endShape();
@@ -109,6 +109,13 @@ void drawButtons(){
       fill(0);
       text(volQuant+"%", volX+38,y+15);
   popStyle();
+  
+  
+  beginShape(); //OPEN
+    x = openX; vertex(x,y); vertex(x,y+15); vertex(x+8,y+19); vertex(x+8,y+4);
+    stroke(Color); line(x,y,x+12,y+1); line(x+12,y+1,x+12,y+16); line(x+12,y+16,x,y+15);
+  endShape();
+  
   
 }
 

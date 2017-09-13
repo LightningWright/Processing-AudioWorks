@@ -19,7 +19,7 @@ class Song{
 void select(File selection){
     
   if (selection == null) {
-      println("No se ha seleccionado cancion, pulse 'L' para elegir una.");
+      println("No se ha seleccionado cancion, pulse 'L' o haga click en el icono para elegir una.");
   } 
   else {
     
